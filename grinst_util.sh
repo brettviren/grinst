@@ -92,6 +92,19 @@ untar () {
 }
 
 
+cvsco () {
+    url=$1 ; shift
+    module=$1 ; shift
+    
+    if [ -d "$module" ] ; then
+	echo "CVS module \"$module\" already checked out"
+	return
+    fi
+
+    cvs -d $url checkout $module
+}
+
+
 svnco () {
     url=$1 ; shift
     tgt=$1 ; shift

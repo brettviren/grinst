@@ -6,7 +6,7 @@ grinst_install_geant4 () {
 
     eval $(grinst_setup cmake)
 
-    local unpacked="geant4.${version}"
+    local unpacked="geant${version}"
     local tarball="${unpacked}.tar.gz"
     local url="http://geant4.cern.ch/support/source/$tarball"
 
