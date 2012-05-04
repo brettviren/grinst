@@ -14,4 +14,5 @@ grinst_packages="cmake python"
 cmake_version=2.8.7
 python_version=2.7.2
 ipython_version=0.12
+geant4_version=4.9.5.p01
 
