@@ -6,7 +6,7 @@ grinst_install_geant4 () {
 
     eval $(grinst_setup cmake)
 
-    local unpacked="geant${version}"
+    local unpacked="geant4.${version}"
     local tarball="${unpacked}.tar.gz"
     local url="http://geant4.cern.ch/support/source/$tarball"
 
@@ -24,7 +24,7 @@ grinst_install_geant4 () {
 	  -DGEANT4_USE_G3TOG4=1 \
 	  $srcdir
 
-    make -j8
+    make $grinst_parallel
     make install
 
     pushd $prefix

@@ -6,9 +6,11 @@ grinst_setup_ipython() {
     eval $(grinst_setup python)
     grinst_setup python
 
+    PATH=$(pathadd $prefix/bin $PATH)
+    PYTHONPATH=$(pathadd $prefix/lib/python2.7/site-packages $PYTHONPATH)
     cat <<EOF
-export PATH=$(pathadd $prefix/bin $PATH)
-export PYTHONPATH=$(pathadd $prefix/lib/python2.7/site-packages $PYTHONPATH)
+export PATH=$PATH
+export PYTHONPATH=$PYTHONPATH
 EOF
 
     # fixme: hardcodes python 2.7 version, but whatchya gonna do?
