@@ -3,13 +3,13 @@
 set_target () {
     what=$1 ; shift
     var=$(resolve grinst_${what}_target)
-    if [ -n "${var}" ] ; then
+    if [ -n "${var}" ] ; then	# explicitly defined 
 	return
     fi
     if [ -z "$grinst_target" ] ; then
 	error "Can not set $var"
     fi
-    eval grinst_${what}_target=${grinst_target}_$what
+    eval grinst_${what}_target=${grinst_target}/$what
 }
 
 grinst_install () {

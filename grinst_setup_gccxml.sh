@@ -3,8 +3,10 @@
 grinst_setup_gccxml () {
     local prefix=$1; shift
 
+    PATH=$(pathadd $prefix/bin $PATH)
+
     cat <<EOF
-export PATH=$(pathadd $prefix/bin $PATH)
+export PATH=$PATH
 EOF
     
 }

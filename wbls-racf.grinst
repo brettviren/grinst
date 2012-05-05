@@ -1,8 +1,9 @@
 #!/bin/bash
 
 # Where things are or to be installed
-grinst_install_target=$HOME/work/wbls/install
-grinst_build_target=$HOME/work/wbls/tmp
+#grinst_install_target=$HOME/work/wbls/install
+#grinst_build_target=$HOME/work/wbls/tmp
+grinst_target=/data3/lbne/bv/wbls
 
 # list of packages
 grinst_packages="cmake python ipython geant4 gccxml root vgm"
