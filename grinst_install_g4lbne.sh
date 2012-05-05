@@ -11,22 +11,24 @@ project(g4lbne)
 
 # Hook into Geant4
 find_package(Geant4 REQUIRED)
-include(${Geant4_USE_FILE})
+include(\${Geant4_USE_FILE})
 
 # Hook into ROOT
 find_package(ROOT REQUIRED)
-include(${ROOT_USE_FILE})
+include(\${ROOT_USE_FILE})
 
-include_directories(${PROJECT_SOURCE_DIR}/include)
-file(GLOB sources ${PROJECT_SOURCE_DIR}/src/*.cc)
-file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
+include_directories(\${PROJECT_SOURCE_DIR}/include)
+file(GLOB sources \${PROJECT_SOURCE_DIR}/src/*.cc)
+file(GLOB headers \${PROJECT_SOURCE_DIR}/include/*.hh)
 
-ROOT_GENERATE_DICTIONARY(g4lbnedict ${headers} LINKDEF Linkdef.h OPTIONS -p)
+ROOT_GENERATE_DICTIONARY(g4lbnedict \${PROJECT_SOURCE_DIR}/include/TrackPoint_t.hh \${PROJECT_SOURCE_DIR}/include/LBNEDataNtp_t.hh  LINKDEF Linkdef.h OPTIONS -p)
 
-add_executable(g4lbne g4lbne.cc ${sources} ${headers})
-target_link_libraries(g4lbne ${Geant4_LIBRARIES} ${ROOT_LIBRARIES} Tree)
+add_executable(g4lbne g4lbne.cc \${sources} \${headers} g4lbnedict.cxx)
+target_link_libraries(g4lbne \${Geant4_LIBRARIES} \${ROOT_LIBRARIES} Tree)
 
 EOF
+}
+
 
 grinst_install_g4lbne () {
     local version=$1; shift
@@ -50,7 +52,9 @@ grinst_install_g4lbne () {
 
     cmake -DCMAKE_INSTALL_PREFIX=$prefix  $srcdir
     make
-    make install
+
+    assuredir $prefix/bin
+    cp bin/g4lbne $prefix/bin/
     popd
 }
 
