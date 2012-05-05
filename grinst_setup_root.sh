@@ -4,9 +4,9 @@ grinst_setup_root () {
     local prefix=$1; shift
 
     eval $(grinst_setup gccxml)
-    eval $(grinst_setup python)
-
     grinst_setup gccxml
+
+    eval $(grinst_setup python)
     grinst_setup python
 
     ROOTSYS=$prefix
