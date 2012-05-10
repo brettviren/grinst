@@ -22,12 +22,6 @@ grinst_install_root () {
     assuredir $blddir
     pushd $blddir
 
-    ## Debian + gcc 4.6.3 lacks some obsolete headers.  Some but not
-    ## all can be installed in a non-standard location.  Reported to
-    ## roottalk.  Since it is not a full fix, don't bother here, but
-    ## this is how non-standard locations can be injected:
-    # -DCMAKE_CXX_FLAGS:STRING='-I/usr/include/lsb3/c++/backward' 
-
     cmake $srcdir \
           -DCMAKE_INSTALL_PREFIX=$prefix 
     make $grinst_parallel

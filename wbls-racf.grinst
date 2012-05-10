@@ -16,11 +16,12 @@ geant4_version=4.9.5.p01
 gccxml_version=0.9.0_20120309
 root_version=5.32.02
 vgm_version=3-05		# from sf svn
+hepmc_version=2.06.08
 
 ## REQUIRED KLUDGE
 
 # Geant4 puts data in directories only partially named after version strings
-geant4_datadir=share/Geant4-9.5.1
+geant4_datadir=share/Geant4-9.5.1/data
 
 
 ## OPTIONAL
