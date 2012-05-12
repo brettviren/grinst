@@ -4,32 +4,47 @@ grinst_dir=$(readlink -f $(dirname $BASH_SOURCE))
 
 source $grinst_dir/grinst_util.sh
 
+set_target () {
+    what=$1 ; shift
+    var=$(resolve grinst_${what}_target)
+    if [ -n "${var}" ] ; then	# explicitly defined 
+	return
+    fi
+    if [ -z "$grinst_target" ] ; then
+	error "Can not set \"$var\""
+    fi
+    eval grinst_${what}_target=${grinst_target}/$what
+}
+
 main () {
-   local config=$1 ; shift
-   if [ -z "$config" -o ! -f "$config" ] ; then
-       error "No config file given"
-   fi
+    local config=$1 ; shift
+    if [ -z "$config" -o ! -f "$config" ] ; then
+	error "No config file given"
+    fi
 
-   local command=$1; shift
-   if [ -z "$command" ] ; then
-       error "No command given"
-   fi
+    local command=$1; shift
+    if [ -z "$command" ] ; then
+	error "No command given"
+    fi
 
-   source $config
-   local package
-   for package in $grinst_packages
-   do
-       local var=$(resolve ${package}_version)
-       if [ -z "$var" ] ; then
-	   error "No version for package \"$package\""
-       fi
-   done
+    source $config
+    set_target build
+    set_target install
 
-   source $grinst_dir/grinst_install.sh
+    local package
+    for package in $grinst_packages
+    do
+	local var=$(resolve ${package}_version)
+	if [ -z "$var" ] ; then
+	    error "No version for package \"$package\""
+	fi
+    done
 
-   source $grinst_dir/grinst_setup.sh
+    source $grinst_dir/grinst_install.sh
 
-   grinst_$command $@
+    source $grinst_dir/grinst_setup.sh
+    
+    grinst_$command $@
 }
 
 main $@
