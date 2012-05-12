@@ -14,6 +14,8 @@ grinst_setup () {
     local version=$(resolve ${package}_version)
     install_dir=$grinst_target/install/$package/$version
 
+    echo "export $grinst_${package}_install_dir=$install_dir"
+
     source $grinst_dir/grinst_setup_$package.sh
     grinst_setup_$package $install_dir
 }
