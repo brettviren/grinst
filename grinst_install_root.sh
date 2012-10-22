@@ -16,6 +16,10 @@ grinst_install_root () {
     untar "$tarball" "$unpacked"
     mv root $unpacked
 
+    # pushd $unpacked
+    # patch -p1 < $grinst_dir/root-v5.32.02-cmake.patch
+    # popd
+
     local srcdir=$(readlink -f $unpacked)
 
     local blddir="$root_v${version}-cmake-build"

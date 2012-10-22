@@ -7,7 +7,12 @@ grinst_install_vgm () {
     eval $(grinst_setup geant4)
     eval $(grinst_setup root)
 
-    url="https://vgm.svn.sourceforge.net/svnroot/vgm/tags/v${version}/vgm"
+    local url
+    if [ "$version" = "trunk" ] ; then
+	url="https://vgm.svn.sourceforge.net/svnroot/vgm/tags/trunk/vgm"
+    else
+	url="https://vgm.svn.sourceforge.net/svnroot/vgm/tags/v${version}/vgm"
+    fi
     unpacked="vgm.${version}"
     svnco $url $unpacked
     pushd $unpacked
