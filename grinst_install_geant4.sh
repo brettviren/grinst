@@ -5,6 +5,7 @@ grinst_install_geant4 () {
     local prefix=$1 ; shift
 
     eval $(grinst_setup cmake)
+    eval $(grinst_setup xercesc)
 
     local unpacked="geant${version}"
     local tarball="${unpacked}.tar.gz"
@@ -18,11 +19,15 @@ grinst_install_geant4 () {
     pushd "${unpacked}-cmake-build"
 
 
-    cmake -DGEANT4_INSTALL_DATA=1 \
-	  -DCMAKE_INSTALL_PREFIX=$prefix \
-	  -DGEANT4_USE_OPENGL_X11=ON \
-	  -DGEANT4_USE_G3TOG4=1 \
-	  $srcdir
+    cmake \
+	-DGEANT4_INSTALL_DATA=1 \
+	-DCMAKE_INSTALL_PREFIX=$prefix \
+	-DCMAKE_BUILD_TYPE=Debug \
+	-DGEANT4_USE_GDML=ON \
+	-DXERCESC_ROOT_DIR=$XERCESC_ROOT_DIR \
+	-DGEANT4_USE_OPENGL_X11=ON \
+	-DGEANT4_USE_G3TOG4=1 \
+	$srcdir
 
     make $grinst_parallel
     make install
