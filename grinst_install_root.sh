@@ -14,8 +14,12 @@ grinst_install_root () {
     local url="ftp://root.cern.ch/root/$tarball"
 
     download "$url"
-    untar "$tarball" "$unpacked"
-    mv root $unpacked
+    if [ ! -d root ] ; then
+	untar "$tarball" "$unpacked"
+    fi
+    if [ -d root ] ; then
+	mv root $unpacked
+    fi
 
     # pushd $unpacked
     # patch -p1 < $grinst_dir/root-v5.32.02-cmake.patch

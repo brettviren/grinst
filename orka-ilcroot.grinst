@@ -5,11 +5,9 @@ grinst_install_target=$HOME/work/orka/ilcroot/install
 grinst_build_target=$HOME/work/orka/ilcroot/build
 
 # list of packages
-grinst_packages="cernlib cmake python ipython geant4 gccxml root orkailcroot"
+grinst_packages="cmake python ipython geant4 gccxml geant3vmc root orkailcroot"
 
 # each package needs a _version variable
-#cernlib_version=2006b_x86_64-slc5-gcc34-opt # binary for 64 bit linux
-cernlib_version=2006b_i686-slc5-gcc43-opt # binary for 32 bit linux
 cmake_version=2.8.9
 python_version=2.7.3
 ipython_version=0.13.1
@@ -17,6 +15,7 @@ geant4_version=4.9.5.p02
 gccxml_version=0.9.0_20120309
 pythia6_version=6		# exact value is ignored
 root_version=5.34.03
+geant3vmc_version=1.14
 #orkailcroot_version=master	# git branch or tag
 orkailcroot_version=v1-02rc1
 

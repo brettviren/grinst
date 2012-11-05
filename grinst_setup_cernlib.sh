@@ -5,6 +5,7 @@ grinst_setup_cernlib () {
     export CERN_LEVEL=$(basename $prefix)
     export CERN=$(dirname $prefix)
     export CERN_ROOT=$prefix
+
     PATH=$(pathadd $prefix/bin $PATH)
     LD_LIBRARY_PATH=$(pathadd $prefix/lib $LD_LIBRARY_PATH)
 
