@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Where things are or to be installed
+base=$HOME/work/orka/ilcroot
+grinst_install_target=$base/install
+grinst_build_target=$base/build
+
+# list of packages
+grinst_packages="cmake python ipython pythia6 geant4 gccxml geant3vmc root orkailcroot"
+
+# each package needs a _version variable
+cmake_version=2.8.9
+python_version=2.7.3
+ipython_version=0.13.1
+geant4_version=4.9.5.p02
+gccxml_version=0.9.0_20120309
+pythia6_version=6		# exact value is ignored
+root_version=5.34.03
+geant3vmc_version=1.14
+orkailcroot_version=master	# git branch or tag
+#orkailcroot_version=v1-02rc1
+
+## REQUIRED KLUDGE
+
+# Geant4 puts data in directories only partially named after version strings
+geant4_datadir=share/Geant4-9.5.2
+
+
+## OPTIONAL
+
+# parallel make
+grinst_parallel=-j4
+
