@@ -1,0 +1,16 @@
+--- src/make/Make.include       2012-11-16 15:00:50.000000000 -0500
++++ src/make/Make.include.mod   2012-11-16 15:20:34.387385857 -0500
+@@ -119,11 +119,11 @@
+ FORT_LIBRARIES =
+
+ ifeq ($(strip $(ARCH)),linux)
+-FORT_LIBRARIES = -L/usr/lib -lg2c
++FORT_LIBRARIES = -L/usr/lib
+ endif
+
+ ifeq ($(strip $(ARCH)),linuxx8664gcc)
+-FORT_LIBRARIES = -L/usr/lib64 -lg2c
++FORT_LIBRARIES = -L/usr/lib64
+ endif
+
+ ifeq ($(strip $(ARCH)),macosx)

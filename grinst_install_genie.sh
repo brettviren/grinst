@@ -4,6 +4,7 @@ grinst_install_genie () {
     local version=$1; shift
     local prefix=$1 ; shift
 
+    eval $(grinst_setup python)
     eval $(grinst_setup pythia6)
     eval $(grinst_setup lhapdf)
     eval $(grinst_setup log4cpp)
@@ -21,8 +22,10 @@ grinst_install_genie () {
 
     svnco $svnurl $unpacked
 
-    pushd "$unpacked"
+    local srcdir=$(readlink -f $unpacked)
+    apply_patches
 
+    pushd "$unpacked"
     export GENIE=$(pwd)
 
     mkdir -p $prefix		# genie install is incompetent to do this itself
@@ -37,6 +40,7 @@ grinst_install_genie () {
 	--with-log4cpp-inc=${log4cpp_install_dir}/include \
 	--with-log4cpp-lib=${log4cpp_install_dir}/lib 
     make 
+    make utils
     make install
 
     # handle incomplete build

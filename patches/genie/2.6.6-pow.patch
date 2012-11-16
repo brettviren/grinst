@@ -1,0 +1,29 @@
+--- ./src/Numerical/Simpson1D.cxx       2012-11-16 15:00:45.000000000 -0500
++++ ./src/Numerical/Simpson1D.cxx.mod   2012-11-16 15:28:17.308503762 -0500
+@@ -64,7 +64,7 @@
+   // integral value converges to the real one within the required accuracy
+   for(unsigned int iter=0; iter<fIMaxConv; iter++) {
+
+-    np = (unsigned int) TMath::Power(2,n) + 1;
++    np = (unsigned int) TMath::Power((double)2,(int)n) + 1;
+     n++;
+
+     fmap.IncreaseGridDensity(np);
+--- ./src/Numerical/Simpson2D.cxx       2012-11-16 15:00:45.000000000 -0500
++++ ./src/Numerical/Simpson2D.cxx.mod   2012-11-16 15:32:06.857516178 -0500
+@@ -107,13 +107,13 @@
+     int idim=-1;
+     if(fFastDensityIncrease) {
+       // increase the grid density fast - all dimensions simultaneously
+-      np = (unsigned int) TMath::Power(2,n) + 1;
++      np = (unsigned int) TMath::Power((double)2,(int)n) + 1;
+       n++;
+       fmap.IncreaseGridDensity(np);
+     } else {
+       // increase the grid density slowly - 1 dimension at a time...
+       if(iter%ndim==0) {
+-        np = (unsigned int) TMath::Power(2,n) + 1;
++        np = (unsigned int) TMath::Power((double)2,(int)n) + 1;
+         n++;
+         idim = 0;
+       }

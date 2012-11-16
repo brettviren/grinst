@@ -3,6 +3,8 @@
 grinst_setup_genie () {
     local prefix=$1; shift
 
+    eval $(grinst_setup python)
+    grinst_setup python
     eval $(grinst_setup pythia6)
     grinst_setup pythia6
     eval $(grinst_setup lhapdf)

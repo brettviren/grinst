@@ -1,0 +1,12 @@
+--- math/mathcore/inc/Fit/SparseData.h       2012-10-27 17:18:48.000000000 -0400
++++ math/mathcore/inc/Fit/SparseData.h.mod   2012-11-16 14:50:10.354526288 -0500
+@@ -17,8 +17,8 @@
+
+ #ifndef ROOT_Fit_DataVector
+ #include "Fit/DataVector.h"
+-#include "Fit/BinData.h"
+ #endif
++#include "Fit/BinData.h"
+
+
+ namespace ROOT {

@@ -5,7 +5,11 @@
 # REQUIRED
 
 # Where things are or to be installed
-grinst_target=/lbne/u/bvlbne/genie
+#grinst_target=/lbne/u/bvlbne/genie
+#grinst_target=/dev/shm/bvlbne/genie
+#base=$HOME/work/orka/ilcroot
+grinst_install_target=/data4/lbne/bv/genie-test-install
+grinst_build_target=/dev/shm/genie-tmp/build
 
 # list of packages
 grinst_packages="cmake python libxml2 ipython pythia6 gccxml root log4cpp lhapdf genie"
