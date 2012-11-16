@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# example configuration for grinst
+
+# REQUIRED
+
+# Where things are or to be installed
+grinst_target=/lbne/u/bvlbne/genie
+
+# list of packages
+grinst_packages="cmake python ipython pythia6 gccxml geant3vmc root log4cpp lhapdf genie"
+
+# each package needs a _version variable
+cmake_version=2.8.7
+python_version=2.7.3
+ipython_version=0.13.1
+pythia6_version=6           # exact value is ignored
+gccxml_version=0.9.0_20120309
+root_version=5.32.02
+log4cpp_version=1.1rc3
+lhapdf_version=5.8.8
+geant3vmc_version=1.14
+genie_version=2.6.6
+
+## OPTIONAL
+
+# parallel make
+grinst_parallel=-j8
