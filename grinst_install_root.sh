@@ -27,7 +27,7 @@ grinst_install_root () {
     pushd $blddir
 
     cmake $srcdir \
-          -DCMAKE_INSTALL_PREFIX=$prefix 
+        -DCMAKE_INSTALL_PREFIX=$prefix 
     make $grinst_parallel
     make install
 }

@@ -22,7 +22,7 @@ g4lbne_version=HEAD		# CVS
 ## REQUIRED KLUDGE
 
 # Geant4 puts data in directories only partially named after version strings
-geant4_datadir=share/Geant4-9.5.1
+geant4_datadir=share/Geant4-9.5.1/data
 
 
 ## OPTIONAL
