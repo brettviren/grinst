@@ -1,7 +1,7 @@
 #!/bin/bash
 
 resolve () {
-    what=$1 ; shift
+    local what=$1 ; shift
     eval echo \$$what
 }
 
@@ -93,8 +93,8 @@ untar () {
 
 
 cvsco () {
-    url=$1 ; shift
-    module=$1 ; shift
+    local url=$1 ; shift
+    local module=$1 ; shift
     
     if [ -d "$module" ] ; then
 	echo "CVS module \"$module\" already checked out"
@@ -106,8 +106,8 @@ cvsco () {
 
 
 svnco () {
-    url=$1 ; shift
-    tgt=$1 ; shift
+    local url=$1 ; shift
+    local tgt=$1 ; shift
     if [ -d $tgt ] ; then
         echo "Already checked out svn repo $url to $tgt"
         return
@@ -118,5 +118,50 @@ svnco () {
     mkdir $tgt
     pushd ${tgt}.svn
     tar -cf - $(find . -print | grep -v .svn) | (cd ../$tgt; tar -xf -)
+    popd
+}
+
+gitco () {
+    local url=$1 ; shift
+    local tag=$1 ; shift
+    local tgt=$(basename $url)
+    if [ -d "$tgt" ] ; then
+	echo "Already checked out $tgt"
+    else
+	git clone $url $tgt
+    fi
+    pushd $tgt
+    git fetch --all
+    git fetch --tags
+    git branch | grep "^\* $tag"
+    if [ "$?" = "0" ] ; then
+	echo "Already checked out $tag"
+    else
+	git checkout -b $tag $tag
+    fi
+    popd
+}
+
+# apply any patches matching the package name and version.  It is
+# assumed that $srcdir has been defined pointing to unpacked source
+# area.  A .PATCHFILENAME.applied flag file will be made in this
+# directory to indicate a patch has been applied
+apply_patches () {
+    local level=$1 ; shift
+    if [ -z "$level" ] ; then
+	level=-p0
+    fi
+    pushd $srcdir
+    for pf in ${grinst_dir}/patches/${package}/${version}*.patch ; do
+	local ff=$(basename $pf)
+	ff=".${ff}.applied"
+	if [ -f "$ff" ] ; then
+	    echo "Patch file already applied: $pf"
+	    continue
+	fi
+	echo "Patching in $(pwd) with $pf"
+	patch $level < $pf
+	touch $ff
+    done
     popd
 }

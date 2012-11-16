@@ -1,0 +1,24 @@
+diff -u cmake/modules/FindPythia6.cmake{~,}
+--- cmake/modules/FindPythia6.cmake~    2012-10-27 17:18:41.000000000 -0400
++++ cmake/modules/FindPythia6.cmake     2012-10-31 16:50:13.000000000 -0400
+@@ -8,7 +8,7 @@
+ set(PYTHIA6_FOUND 0)
+
+
+-find_library(PYTHIA6_LIBRARY NAMES pythia6 libPythia6 PATHS
++find_library(PYTHIA6_LIBRARY NAMES pythia6 Pythia6 PATHS
+   $ENV{PYTHIA6_DIR}/lib
+   /cern/pro/lib
+   /opt/pythia
+diff -u cmake/modules/FindPythia8.cmake{~,}
+--- cmake/modules/FindPythia8.cmake~    2012-10-27 17:18:41.000000000 -0400
++++ cmake/modules/FindPythia8.cmake     2012-10-31 17:06:26.000000000 -0400
+@@ -17,7 +17,7 @@
+   DOC "Specify the directory containing Pythia.h."
+ )
+
+-find_library(PYTHIA8_LIBRARY NAMES Pythia8 libPythia8 PATHS
++find_library(PYTHIA8_LIBRARY NAMES Pythia8 Pythia8 PATHS
+   $ENV{PYTHIA8_DIR}/lib
+   /opt/pythia8/lib
+   /usr/local/lib
