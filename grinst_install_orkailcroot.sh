@@ -19,7 +19,8 @@ grinst_install_orkailcroot () {
     # Read-only:
     # giturl=git://github.com/brettviren/ORKA-ILCRoot.git
     # Commit:
-    giturl=git@github.com:brettviren/ORKA-ILCRoot.git
+    #giturl=git@github.com:brettviren/ORKA-ILCRoot.git
+    giturl=http://cdcvs.fnal.gov/projects/orka-ilcroot
     gitco $giturl $version
 
     local srcdir="$(pwd)/$(basename $giturl)"
