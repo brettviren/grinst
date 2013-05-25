@@ -33,7 +33,7 @@ EOF
 
 if [ "$opt" = "debug" ] ; then
     echo "Staring subshell setup for $grinst_suite_name with $rcfile"
-    echo "will delete on exit"
+    echo "On exit will delete: $rcdir"
 fi
 
 /bin/bash --rcfile $rcfile
