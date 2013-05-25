@@ -7,7 +7,7 @@ export PATH=\$(pathadd $prefix/bin \$PATH)
 LD_LIBRARY_PATH=\$(pathadd $prefix/lib64 \$LD_LIBRARY_PATH)
 LD_LIBRARY_PATH=\$(pathadd $prefix/lib \$LD_LIBRARY_PATH)
 export LD_LIBRARY_PATH
-export geant4_data=$prefix/\$geant4_datadir
+export geant4_data=$prefix/$geant4_datadir
 
 maybe="\$(echo \$geant4_data/G4ABLA*)"
 if [ -d "\$maybe" ] ; then
