@@ -49,5 +49,10 @@ if [ -d "\$maybe" ] ; then
     export G4REALSURFACEDATA="\$maybe"
 fi
 
+maybe="\$(echo \$geant4_data/G4SAIDDATA*)"
+if [ -d "\$maybe" ] ; then
+    export G4SAIDXSDATA="\$maybe"
+fi
+
 EOF
 }
