@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Start a shell that is setup for a particular grinst suite
+#
+
+
+usage () {
+    echo "grinst-start-shell /path/to/grinst/suite.grinst"
+    exit 1
+}
+
+suite_file=$1 ; shift
+if [ -z "$suite_file" ] ; then
+    usage
+fi
+
+grinst_dir=$(dirname $suite_file)
+if [ -z "$grinst_dir" ] ; then
+    grinst_dir="."
+fi
+
+export grinst_suite_name=$(basename $suite_file .grinst)
+
+eval $($grinst_dir/grinst.sh $suite_file setup all)
+echo "Staring subshell setup for $grinst_suite_name"
+/bin/bash --rcfile $grinst_dir/grinst-start-shell-rc
+

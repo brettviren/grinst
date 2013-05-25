@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# An RC file for grinst-start-shell
+
+if [ -f "$HOME/.bashrc" ] ; then
+    source "$HOME/.bashrc"
+fi
+
+# grinst_suite_name defined in grinst-start-shell
+export PS1="($grinst_suite_name)$PS1" 
+
+
