@@ -4,7 +4,7 @@ grinst_install_gccxml () {
     local version=$1; shift
     local prefix=$1 ; shift
     
-    eval $(grinst_setup cmake)
+    source $(grinst_setup cmake)
 
     local unpacked="gccxml-$version"
     local tarball="${unpacked}.tar.gz"

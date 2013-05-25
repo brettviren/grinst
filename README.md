@@ -16,8 +16,11 @@ grinst.sh configfile install all
 Set up Borne shell environment like:
 
 ```shell
-eval $(grinst.sh configfile setup all)
+source $(grinst.sh configfile setup all)
 ```
+
+Note that a directory of setup scripts are created in `/tmp` by this
+`setup` command.  It's up to the caller to clean it up.
 
 Instead of `all` a list of explicit packages can be given.  Ordering
 should reflect dependencies.
@@ -46,10 +49,10 @@ been installed.
 
 ### Setup script
 
-The script should be named like `grinst_setup_PACKAGENAME` and is pass
+The script should be named like `grinst_setup_PACKAGENAME` and is passed
 the prefix directory that the package should be installed to.  It
 should echo any Bourne shell setup code (`*csh` users can go take a
-hike).
+hike).  
 
 ### Utilities
 

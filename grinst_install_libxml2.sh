@@ -4,7 +4,7 @@ grinst_install_libxml2 () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup python)
+    source $(grinst_setup python)
 
     local unpacked="libxml2-${version}"
     local tarball="${unpacked}.tar.gz"

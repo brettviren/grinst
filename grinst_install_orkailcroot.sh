@@ -7,13 +7,12 @@ grinst_install_orkailcroot () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup cernlib)
-    eval $(grinst_setup cmake)
-    eval $(grinst_setup python)
-    eval $(grinst_setup geant4)
-    eval $(grinst_setup root)
-    eval $(grinst_setup geant3vmc)
-
+    source $(grinst_setup cernlib)
+    source $(grinst_setup cmake)
+    source $(grinst_setup python)
+    source $(grinst_setup geant4)
+    source $(grinst_setup root)
+    source $(grinst_setup geant3vmc)
 
     # fixme: need to change when switch to redmine git
     # Read-only:
