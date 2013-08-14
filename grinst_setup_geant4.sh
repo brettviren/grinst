@@ -36,7 +36,7 @@ EOF
 	echo "export G4LEVELGAMMADATA=$dir"
     fi
 
-    dir=$(ls -d $geant4_data/G4NDL** | tail -1)
+    dir=$(ls -d $geant4_data/G4NDL* | tail -1)
     if [ -n "$dir" ] ; then 
 	G4NEUTRONHPDATA=$dir
 	echo "export G4NEUTRONHPDATA=$dir"
@@ -64,6 +64,12 @@ EOF
     if [ -n "$dir" ] ; then 
 	G4REALSURFACEDATA=$dir
 	echo "export G4REALSURFACEDATA=$dir"
+    fi
+
+    dir=$(ls -d $geant4_data/G4SAIDDATA* | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4SAIDXSDATA=$dir
+	echo "export G4SAIDXSDATA=$dir"
     fi
 
 }
