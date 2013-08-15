@@ -1,21 +1,23 @@
 #!/bin/bash
 
-grinst_install_ipython () {
+grinst_install_libxml2 () {
     local version=$1; shift
     local prefix=$1 ; shift
 
     source $(grinst_setup python)
 
-    local unpacked="ipython-${version}"
+    local unpacked="libxml2-${version}"
     local tarball="${unpacked}.tar.gz"
-    local url="http://archive.ipython.org/release/${version}/$tarball"
+    local url="ftp://xmlsoft.org/libxml2/${tarball}"
 
     download "$url"
     untar "$tarball" "$unpacked"
+
     pushd "$unpacked"
 
-    python setup.py install --prefix=$prefix
+    ./configure --prefix="$prefix"
+    make 
+    make install
 
     popd
-    
 }

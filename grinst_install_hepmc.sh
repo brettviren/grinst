@@ -6,7 +6,7 @@ grinst_install_hepmc () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup cmake)
+    source $(grinst_setup cmake)
 
     local unpacked="HepMC-$version"
     local tarball="$unpacked.tar.gz"

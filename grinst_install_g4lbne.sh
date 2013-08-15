@@ -34,9 +34,9 @@ grinst_install_g4lbne () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup cmake)
-    eval $(grinst_setup geant4)
-    eval $(grinst_setup root)
+    source $(grinst_setup cmake)
+    source $(grinst_setup geant4)
+    source $(grinst_setup root)
 
     local srcdir=lbne-beamsim/g4lbne
     local blddir=${srcdir}-cmake-build

@@ -4,11 +4,11 @@ grinst_install_genie () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup python)
-    eval $(grinst_setup pythia6)
-    eval $(grinst_setup lhapdf)
-    eval $(grinst_setup log4cpp)
-    eval $(grinst_setup root)
+    source $(grinst_setup python)
+    source $(grinst_setup pythia6)
+    source $(grinst_setup lhapdf)
+    source $(grinst_setup log4cpp)
+    source $(grinst_setup root)
 
     local _version_=$(echo $version | tr '.' '_')
 
