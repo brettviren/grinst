@@ -2,7 +2,8 @@
 
 grinst_dir=$(readlink -f $(dirname $BASH_SOURCE))
 
-grinst_setup_env_dir=$(mktemp -d grinst.$USER.XXXXXXXX)
+grinst_setup_env_dir=$(mktemp -d /tmp/grinst.$USER.XXXXXXXX)
+
 
 source $grinst_dir/grinst_util.sh
 source $grinst_dir/grinst_env_util.sh
