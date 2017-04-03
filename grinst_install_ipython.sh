@@ -4,7 +4,7 @@ grinst_install_ipython () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup python)
+    source $(grinst_setup python)
 
     local unpacked="ipython-${version}"
     local tarball="${unpacked}.tar.gz"

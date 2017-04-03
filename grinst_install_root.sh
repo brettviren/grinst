@@ -4,10 +4,10 @@ grinst_install_root () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup cmake)
-#    eval $(grinst_setup gccxml)
-    eval $(grinst_setup python)
-    eval $(grinst_setup pythia6)
+    setup $(grinst_setup cmake)
+    setup $(grinst_setup gccxml)
+    setup $(grinst_setup python)
+    setup $(grinst_setup pythia6)
 
     #local unpacked="root_v${version}.source"
     local unpacked="root-${version}"

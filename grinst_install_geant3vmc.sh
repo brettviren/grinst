@@ -6,7 +6,7 @@ grinst_install_geant3vmc () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup root)
+    source $(grinst_setup root)
 
     local unpacked="geant321+_vmc.${version}"
     local tarball="${unpacked}.tar.gz"

@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Where things are or to be installed
-base=$HOME/work/orka/ilcroot
+#base=$HOME/work/orka/ilcroot
+base=/data4/lbne/bv/orka2
 grinst_install_target=$base/install
 grinst_build_target=$base/build
 

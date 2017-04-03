@@ -5,27 +5,31 @@
 # REQUIRED
 
 # Where things are or to be installed
-grinst_build_target=$HOME/tmp
+grinst_build_target=$HOME/build
 grinst_install_target=$HOME/opt
 
 # list of packages
-grinst_packages="cmake python ipython gccxml root xercesc geant4"
+grinst_packages="cmake python ipython gccxml root xercesc hepmc geant4 cowbells"
 
 # each package needs a _version variable
 cmake_version=2.8.11
 python_version=2.7.5
-ipython_version=0.13.2
+#ipython_version=0.13.2
+ipython_version=1.0.0
 gccxml_version=0.9.0_20120309p2
-root_version=5.34.07
+root_version=5.34.09
 xercesc_version=3.1.1
+hepmc_version=2.06.09
 geant4_version=4.9.6.p02
+cowbells_version=git
 
 ## REQUIRED KLUDGE
 
 # Geant4 puts data in directories only partially named after version strings
-geant4_datadir=share/Geant4-9.6/data
+geant4_datadir=share/Geant4-9.6.0/data
 
 ## OPTIONAL
 
 # parallel make
-grinst_parallel=-j4
+# grinst_parallel=-j8
+grinst_parallel=-j4 		# I need a faster computer!

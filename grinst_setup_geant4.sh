@@ -2,25 +2,68 @@
 
 grinst_setup_geant4 () {
     local prefix=$1; shift
-
-    local geant4_data=$prefix/$geant4_datadir
-
-    PATH=$(pathadd $prefix/bin $PATH)
-    LD_LIBRARY_PATH=$(pathadd $prefix/lib64 $LD_LIBRARY_PATH)
-    LD_LIBRARY_PATH=$(pathadd $prefix/lib $LD_LIBRARY_PATH)
-
+    local datadir=$(ls -d $prefix/share/*/data | tail -1)
     cat <<EOF
-export PATH=$PATH
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH
-
-export G4ABLADATA="$geant4_data/G4ABLA3.0"
-export G4LEDATA="$geant4_data/G4EMLOW6.23"
-export G4LEVELGAMMADATA="$geant4_data/PhotonEvaporation2.2"
-export G4NEUTRONHPDATA="$geant4_data/G4NDL4.0"
-export G4NEUTRONXSDATA="$geant4_data/G4NEUTRONXS1.1"
-export G4PIIDATA="$geant4_data/G4PII1.3"
-export G4RADIOACTIVEDATA="$geant4_data/RadioactiveDecay3.4"
-export G4REALSURFACEDATA="$geant4_data/RealSurface1.0"
-
+export PATH=\$(pathadd $prefix/bin \$PATH)
+LD_LIBRARY_PATH=\$(pathadd $prefix/lib64 \$LD_LIBRARY_PATH)
+LD_LIBRARY_PATH=\$(pathadd $prefix/lib \$LD_LIBRARY_PATH)
+export LD_LIBRARY_PATH
+export geant4_data=$datadir
 EOF
+
+
+    dir=$(ls -d $datadir/G4ABLA* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4ABLADATA=$dir
+	echo "export G4ABLADATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/G4EMLOW* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4LEDATA=$dir
+	echo "export G4LEDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/PhotonEvaporation* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4LEVELGAMMADATA=$dir
+	echo "export G4LEVELGAMMADATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/G4NDL* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4NEUTRONHPDATA=$dir
+	echo "export G4NEUTRONHPDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/G4NEUTRONXS* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4NEUTRONXSDATA=$dir
+	echo "export G4NEUTRONXSDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/PII* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4PIIDATA=$dir
+	echo "export G4PIIDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/RadioactiveDecay* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4RADIOACTIVEDATA=$dir
+	echo "export G4RADIOACTIVEDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/RealSurface* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4REALSURFACEDATA=$dir
+	echo "export G4REALSURFACEDATA=$dir"
+    fi
+
+    dir=$(ls -d $datadir/G4SAIDDATA* 2>/dev/null | tail -1)
+    if [ -n "$dir" ] ; then 
+	G4SAIDXSDATA=$dir
+	echo "export G4SAIDXSDATA=$dir"
+    fi
+
 }

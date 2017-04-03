@@ -4,8 +4,8 @@ grinst_install_geant4 () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup cmake)
-    eval $(grinst_setup xercesc)
+    source $(grinst_setup cmake)
+    source $(grinst_setup xercesc)
 
     local unpacked="geant${version}"
     local tarball="${unpacked}.tar.gz"

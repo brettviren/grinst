@@ -4,8 +4,8 @@ grinst_install_vgmcmake () {
     local version=$1; shift
     local prefix=$1 ; shift
 
-    eval $(grinst_setup geant4)
-    eval $(grinst_setup root)
+    source $(grinst_setup geant4)
+    source $(grinst_setup root)
 
     local url
     if [ "$version" = "trunk" ] ; then

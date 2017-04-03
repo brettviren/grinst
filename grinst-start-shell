@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Start a shell that is setup for a particular grinst suite
+#
+
+suite_file=$1 ; shift
+if [ -z "$suite_file" -o ! -f $suite_file ] ; then
+    echo "grinst-start-shell /path/to/grinst/suite.grinst"
+    exit 1
+fi
+
+opt=$1 ; shift
+
+grinst_dir=$(dirname $suite_file)
+if [ -z "$grinst_dir" ] ; then
+    grinst_dir="."
+fi
+
+setupfile=$($grinst_dir/grinst.sh $suite_file setup all)
+rcdir=$(dirname $setupfile)
+rcfile=$rcdir/grinst-start-shell-rc
+cat <<EOF >>$rcfile
+export grinst_suite_name=$(basename $suite_file .grinst)
+
+if [ -f "\$HOME/.bashrc" ] ; then
+    source "\$HOME/.bashrc"
+fi
+
+# grinst_suite_name defined in grinst-start-shell
+export PS1="(\$grinst_suite_name)\$PS1" 
+source $setupfile
+EOF
+
+if [ "$opt" = "debug" ] ; then
+    echo "Staring subshell setup for $grinst_suite_name with $rcfile"
+    echo "On exit will delete: $rcdir"
+fi
+
+/bin/bash --rcfile $rcfile
+
+
+rm -r $rcdir
+
+
+
