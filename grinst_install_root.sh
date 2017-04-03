@@ -5,13 +5,15 @@ grinst_install_root () {
     local prefix=$1 ; shift
 
     eval $(grinst_setup cmake)
-    eval $(grinst_setup gccxml)
+#    eval $(grinst_setup gccxml)
     eval $(grinst_setup python)
     eval $(grinst_setup pythia6)
 
-    local unpacked="root_v${version}.source"
-    local tarball="${unpacked}.tar.gz"
-    local url="ftp://root.cern.ch/root/$tarball"
+    #local unpacked="root_v${version}.source"
+    local unpacked="root-${version}"
+    #https://root.cern.ch/download/root_v6.09.02.source.tar.gz
+    local tarball="root_v${version}.source.tar.gz"
+    local url="https://root.cern.ch/download/${tarball}"
 
     download "$url"
     if [ ! -d root ] ; then
@@ -25,16 +27,17 @@ grinst_install_root () {
     # patch -p1 < $grinst_dir/root-v5.32.02-cmake.patch
     # popd
     local srcdir=$(readlink -f $unpacked)
-    apply_patches
+    #apply_patches
 
     local blddir="$root_v${version}-cmake-build"
     assuredir $blddir
     pushd $blddir
 
     cmake $srcdir \
+	-Dxrootd=OFF \
 	-Dgdml=ON $root_cmake_flags \
         -DCMAKE_INSTALL_PREFIX=$prefix 
 
-    make $grinst_parallel
+    make  $grinst_parallel
     make install
 }

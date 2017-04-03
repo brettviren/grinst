@@ -6,7 +6,7 @@ grinst_install_xercesc () {
 
     local unpacked="xerces-c-${version}"
     local tarball="${unpacked}.tar.gz"
-    local url="http://mirror.metrocast.net/apache//xerces/c/3/sources/$tarball"
+    local url="http://mirrors.ocf.berkeley.edu/apache//xerces/c/3/sources/$tarball"
 
     local srcdir=$(readlink -f $unpacked)
 

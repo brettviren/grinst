@@ -38,11 +38,22 @@ grinst_install_g4lbne () {
     eval $(grinst_setup geant4)
     eval $(grinst_setup root)
 
-    local srcdir=lbne-beamsim/g4lbne
+### CVS puts things in a sub-subdir
+#    local srcdir=lbne-beamsim/g4lbne
+### Git doesn't
+    local srcdir=g4lbne
     local blddir=${srcdir}-cmake-build
 
     # this is read-only
-    cvsco :pserver:anonymous@cdcvs.fnal.gov:/cvs/projects/lbne-beamsim $srcdir
+#    if [ -d "$srcdir" ] ; then
+#	echo "CVS module \"$srcdir\" already checked out"
+#    else
+#	cvs -d :pserver:anonymous@cdcvs.fnal.gov:/cvs/projects/lbne-beamsim checkout -D "2012-06-12 00:00:00 GMT" $srcdir 
+#    fi
+    # this is a git cvsimport of the above
+    local giturl="https://github.com/DUNE/g4lbne.git"
+    local gittag="master"
+    gitco $giturl $gittag $srcdir
 
     srcdir=$(readlink -f $srcdir)
 
@@ -54,7 +65,7 @@ grinst_install_g4lbne () {
     make
 
     assuredir $prefix/bin
-    cp bin/g4lbne $prefix/bin/
+    cp g4lbne $prefix/bin/
     popd
 }
 

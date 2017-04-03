@@ -72,7 +72,7 @@ download () {
         return
     fi
     echo "Downloading $url to $(pwd)"
-    wget $url
+    wget --no-check-certificate $url
     if [ "$?" != 0 ] ; then
 	echo "Download failed for $url"
 	exit 1
@@ -101,7 +101,7 @@ cvsco () {
 	return
     fi
 
-    cvs -d $url checkout $module
+    cvs -d $url checkout "$@" $module
 }
 
 
@@ -124,7 +124,10 @@ svnco () {
 gitco () {
     local url=$1 ; shift
     local tag=$1 ; shift
-    local tgt=$(basename $url)
+    local tgt=$1 ; shift
+    if [ -z "$tgt" ] ; then
+	tgt=$(basename $url)
+    fi
     if [ -d "$tgt" ] ; then
 	echo "Already checked out $tgt"
     else

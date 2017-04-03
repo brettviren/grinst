@@ -5,19 +5,31 @@
 # REQUIRED
 
 # Where things are or to be installed
-grinst_target=/lbne/u/bvlbne/g4lbne
+#grinst_target=/lbne/u/bvlbne/g4lbne
+grinst_install_target=/gpfs01/lbne/users/sw/grinst/g4lbne
+grinst_build_target=/data1/grinst/build
+
+grinst_parallel=-j16
 
 # list of packages
-grinst_packages="cmake python ipython geant4 gccxml root g4lbne"
+#grinst_packages="cmake python ipython geant4 gccxml root g4lbne"
+grinst_packages="cmake python ipython xercesc geant4 root g4lbne"
 
 # each package needs a _version variable
-cmake_version=2.8.7
-python_version=2.7.2
-ipython_version=0.12
+#cmake_version=2.8.12
+cmake_version=3.7.2
+python_version=2.7.13
+#ipython_version=0.12
+ipython_version=5.3.0
+xercesc_version=3.1.4		# pi!
 geant4_version=4.9.5.p01
-gccxml_version=0.9.0_20120309
-root_version=5.32.02
-g4lbne_version=HEAD		# CVS
+#gccxml_version=0.9.0_20120309
+#root_version=5.32.02
+#root_version=6.09.02
+root_version=5.34.36
+
+#g4lbne_version=HEAD		# CVS
+g4lbne_version=master		# git
 
 ## REQUIRED KLUDGE
 

@@ -6,7 +6,10 @@ grinst_install_cmake () {
 
     local unpacked="cmake-${version}"
     local tarball="${unpacked}.tar.gz"
-    local url="http://www.cmake.org/files/v2.8/$tarball"
+#    local url="http://www.cmake.org/files/v2.8/$tarball"
+#    local url="https://cmake.org/files/v2.8/$tarball"
+    local url="https://cmake.org/files/v3.7/$tarball"
+              
 
     download "$url"
     untar "$tarball" "$unpacked"
